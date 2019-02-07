@@ -20,7 +20,7 @@ public class Country {
     @JoinColumn(name = "region_id")
     private Region region;
 
-    @OneToMany(mappedBy = "contry")
+    @OneToMany(mappedBy = "country")
     private Set<Location> locations;
 
     public Country(){
