@@ -15,18 +15,18 @@ public class Department {
     @Id
     private Long departmentId;
     private String departmentName;
-    @ManyToOne
+   @ManyToOne
     @JoinColumn(name = "manager_id")
     private Employee manager;
-
+/*
     @OneToMany(mappedBy = "department")
-    private Set<Employee> employees;
+    private Set<Employee> employees;*/
 
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;
-
+/*
     public Department(){
         employees = new HashSet<>();
-    }
+    }*/
 }

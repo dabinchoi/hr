@@ -13,27 +13,49 @@ import java.util.List;
 import java.util.Set;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest  //boot에서만 사용가능.
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@DataJpaTest
+@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
 public class DepartmentRepositoryTest {
     @Autowired
-    DepartmentRepository departmentRepository;  //Test할 대상
+    DepartmentRepository departmentRepository; // test할 대상
 
     @Test
-    public void initTest() {
-        //아무런 코드가 없다. 에러가 안난다면 설정은 잘되어 있다는 뜻.
+    public void initTest(){
+        // 아무런 코드가 없음. 에러가 안난다면 설정은 잘되어 있다는 뜻.
     }
+
     @Test
-    public void findAll() throws Exception{
-        List<Department> all = departmentRepository.findAll();
+    public void getDepartments() throws Exception{
+        List<Department> all = departmentRepository.getDepartments();
         for(Department department : all){
-            if(department.getDepartmentId() != 60)
-                continue;
-            System.out.println(department.getDepartmentName() );
-            Set<Employee> employees = department.getEmployees();
-//            for(Employee e : employees){
-//                System.out.println(e.getFirstName());
-//            }
+            System.out.println(department.getDepartmentName() + ", " + department.getLocation().getCity() );
         }
     }
-}
+
+    @Test
+    public void getDepartmentsByName() throws Exception{
+        List<Department> all = departmentRepository.getDepartmentsByName("Treasury");
+        for(Department department : all){
+            System.out.println(department.getDepartmentName() + ", " + department.getLocation().getCity() );
+        }
+    }
+
+    @Test
+    public void getDepartmentsWithPartOfName() throws Exception{
+        List<Department> all = departmentRepository.getDepartmentsWithPartOfName("a");
+        for(Department department : all){
+            System.out.println(department.getDepartmentName() + ", " + department.getLocation().getCity() );
+        }
+    }
+
+    @Test
+    public void getDepartmentsByCityname() throws Exception{
+        List<Department> all = departmentRepository.getDepartmentsCityname("Seattle");
+        for(Department department : all){
+            System.out.println(department.getDepartmentName() + " , "+ department.getLocation().getCity());
+
+            }
+        }
+
+    }
+

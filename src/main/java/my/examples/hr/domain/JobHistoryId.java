@@ -1,18 +1,18 @@
 package my.examples.hr.domain;
 
-        import lombok.Data;
+import lombok.Data;
 
-        import javax.persistence.Embeddable;
-        import java.io.Serializable;
-        import java.util.Date;
+import javax.persistence.Embeddable;
+import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Embeddable
 public class JobHistoryId implements Serializable {
     private Long employeeId;
-    private Date startData;
+    private Date startDate;
 
     public JobHistoryId(){
-        startData = new Date();
+        startDate = new Date();
     }
 }
